@@ -3,7 +3,7 @@
   "displayName": "Entity Framework Visualizer",
   "description": "Visualize Entity Framework DbContext models as interactive diagrams",
   "version": "1.0.0",
-  "publisher": "efvis",
+  "publisher": "rebaseandpanic",
   "license": "MIT",
   "icon": "icon.png",
   "repository": {
