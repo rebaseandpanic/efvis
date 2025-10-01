@@ -1,6 +1,9 @@
 .vscode/**
 .vscode-test/**
 src/**
+!src/analyzer/**
+src/analyzer/bin/**
+src/analyzer/obj/**
 .gitignore
 .yarnrc
 vscode.proposed.d.ts
@@ -9,9 +12,6 @@ vscode.proposed.d.ts
 **/*.map
 **/*.ts
 node_modules/**
-src/analyzer/**/*.cs
-src/analyzer/**/*.csproj
-!src/analyzer/bin/**
 src/webview/src/**
 src/webview/node_modules/**
 src/webview/*.json

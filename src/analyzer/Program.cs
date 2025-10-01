@@ -5,12 +5,21 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 using Newtonsoft.Json;
 using System.CommandLine;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 class Program
 {
     static async Task<int> Main(string[] args)
     {
+        // Handle --version directly before command line parsing
+        if (args.Length == 1 && args[0] == "--version")
+        {
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            Console.WriteLine(version?.ToString(3) ?? "0.0.0");
+            return 0;
+        }
+
         var projectOption = new Option<string>(
             "--project",
             description: "Path to the .csproj file to analyze"
