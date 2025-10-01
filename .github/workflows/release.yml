@@ -48,7 +48,7 @@ jobs:
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
     - name: Package extension with tag version
-      run: vsce package ${{ env.VERSION }}
+      run: vsce package
 
     - name: Create Release
       uses: softprops/action-gh-release@v2
