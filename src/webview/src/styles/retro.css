@@ -1,0 +1,33 @@
+:root {
+    --retro-cream: #F4E8C1;
+    --retro-orange: #FF6B35;
+    --retro-teal: #4ECDC4;
+    --retro-navy: #1A535C;
+    --retro-coral: #FF6B6B;
+    --retro-mint: #95E1D3;
+    --retro-yellow: #FFE66D;
+    --retro-purple: #A8E6CF;
+    --retro-bg: #F1EDE1;
+    --retro-white: #FFF8E7;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: var(--retro-bg);
+    background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,.15) 2px, rgba(255,255,255,.15) 4px),
+        repeating-linear-gradient(180deg, transparent, transparent 2px, rgba(255,255,255,.15) 2px, rgba(255,255,255,.15) 4px);
+    color: var(--retro-navy);
+    font-size: 12px;
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+}

@@ -1,0 +1,81 @@
+{
+  "name": "C# + Claude Code",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW"],
+  "forwardPorts": [5000],
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:${containerEnv:HOME}/.dotnet/tools"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-dotnettools.csdevkit",
+        "formulahendry.code-runner",
+        "streetsidesoftware.code-spell-checker",
+        "waderyan.gitblame",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "Meezilla.json",
+        "yzhang.markdown-all-in-one",
+        "manuth.markdown-converter",
+        "ms-ossdata.vscode-pgsql",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.vscode-python-envs",
+        "redhat.vscode-yaml",
+        "TakumiI.markdowntable",
+        "richardwillis.vscode-entity-framework",
+        "github.vscode-github-actions"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "remote.autoForwardPorts": false,
+        "remote.restoreForwardedPorts": false,
+        "portsAttributes": {
+          "9600-9700": {
+            "onAutoForward": "ignore"
+          }
+        },
+        "otherPortsAttributes": {
+          "onAutoForward": "ignore"
+        },
+        "remote.forwardOnOpen": false,
+        "remote.portsScanOnOutput": false,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": { "path": "zsh" },
+          "bash": { "path": "bash" }
+        }
+      }
+    }
+  },
+  "remoteUser": "node",
+  "mounts": [
+    "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
+    "source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume"
+  ],
+  "containerEnv": {
+    "CLAUDE_CONFIG_DIR": "/home/node/.claude"
+  },
+  // ATTENTION! FIREWALL IS OFF!
+  //"postStartCommand": "sudo /usr/local/bin/init-firewall.sh && dotnet --info && claude --version"
+  "postStartCommand": "dotnet --info && claude --version",
+  "portsAttributes": {
+    "5000": {
+      "label": "efvis"
+    }
+  }
+}
+
